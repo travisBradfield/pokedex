@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DetailsServiceService } from 'src/app/pages/details-page/service/details-service.service';
 import { CharacterSource } from 'src/assets/models';
 import { PokemonDetailsService } from './service/pokemon-details.service';
 
@@ -13,16 +14,25 @@ export class ListItemComponent implements OnInit {
   /** Menu item ID */
   @Input() source: CharacterSource;
 
+  /** The whole details object is incoming */
+  @Input() details: any;
+
   // All the details for this character
   characterDetails: any;
 
   constructor(
     private PokemonDetailsService: PokemonDetailsService,
+    private detailsService: DetailsServiceService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.getDetails();
+    if (this.details) {
+      console.log('details: ', this.details);
+      this.characterDetails = this.details;
+    } else {
+      this.getDetails();
+    }
   }
 
   getDetails() {
@@ -46,6 +56,15 @@ export class ListItemComponent implements OnInit {
   }
 
   openDetailsPage() {
-    this.router.navigate(['/page-details']);
+    let id;
+    if (this.source) {
+      let ids = this.source.url.split('/');
+      id = ids[6];
+    } else if (this.details) {
+      id = this.details.id;
+    }
+    
+    this.detailsService.focussedCharacter = this.characterDetails;
+    this.router.navigate([`/page-details/${id}`]);
   }
 }

@@ -2,4 +2,7 @@
     <input class="search_bar example-full-width" placeholder=" Search the Pokedex!" [(ngModel)]="queryText">
     <button class="search_btn example-full-width" (click)="search()">Go!</button>
     <button class="show_all example-full-width" (click)="firstTwenty()">Full listing</button>
+    <button class="favourite_btn example-full-width" (click)="saved()">Saved</button>
+
+    <h2 class="error_message">{{ showError }}</h2>
 </div>

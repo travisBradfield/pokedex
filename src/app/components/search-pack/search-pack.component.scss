@@ -70,6 +70,29 @@ input[type=text], textarea {
     background: #fff;
 }
 
+.favourite_btn {
+    border-radius: 25px;
+    border-style: none;
+    height: 40px;
+    margin: auto;
+    text-align: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: #003a70;
+    color: #ddd;
+    font-size: medium;
+    margin-bottom: 8px;
+}
+
+.favourite_btn:active {
+    background: #fff;
+}
+
 .search_btn:active {
     background: #3D7DCA;
+}
+
+.error_message {
+    color: red;
 }

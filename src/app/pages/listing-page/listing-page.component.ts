@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/components/search-pack/service/search.service';
+import { DetailsServiceService } from '../details-page/service/details-service.service';
 
 @Component({
   selector: 'app-listing-page',
@@ -9,7 +10,7 @@ import { SearchService } from 'src/app/components/search-pack/service/search.ser
 export class ListingPageComponent implements OnInit {
 
   constructor(
-    public searchService: SearchService
+    public searchService: SearchService,
   ) { }
 
   ngOnInit(): void {

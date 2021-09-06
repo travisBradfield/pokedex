@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, pluck, tap } from 'rxjs/operators';
-import { HttpService } from 'src/app/services/http.service';
+import { HttpService } from 'src/app/services/http/http.service';
 import { PokemonListInterface } from 'src/assets/models';
 import { PokemonListStore } from '../state/search-pack.store';
 
@@ -12,6 +12,12 @@ export class SearchService {
 
   // Complete object returned by the listing.
   public pokemonSearchResults: PokemonListInterface;
+
+  // Saved characters
+  favourites: any[];
+
+  // Toggle between favourites and the listing.
+  showFavourites: boolean = false;
 
   constructor(
     private _http: HttpService,

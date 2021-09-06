@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { HttpService } from 'src/app/services/http.service';
+import { HttpService } from 'src/app/services/http/http.service';
 import { PokemonDetailStore } from '../state/list-item.store';
 
 @Injectable({

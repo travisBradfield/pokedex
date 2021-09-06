@@ -11,6 +11,8 @@ import { ComponentsModule } from "./components/components.module";
 import { FormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+
 import { DetailsPageComponent } from './pages/details-page/details-page.component';
 import { ListingPageComponent } from './pages/listing-page/listing-page.component';
 
@@ -28,7 +30,8 @@ import { ListingPageComponent } from './pages/listing-page/listing-page.componen
     ComponentsModule,
     HttpClientModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

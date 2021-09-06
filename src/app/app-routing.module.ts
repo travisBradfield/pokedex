@@ -6,7 +6,7 @@ import { ListingPageComponent } from './pages/listing-page/listing-page.componen
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: ListingPageComponent },
-  { path: 'page-details', component: DetailsPageComponent },
+  { path: 'page-details/:id', component: DetailsPageComponent },
 ];
 
 @NgModule({
