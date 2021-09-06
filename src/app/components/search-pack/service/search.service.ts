@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, pluck, tap } from 'rxjs/operators';
 import { HttpService } from 'src/app/services/http.service';
+import { PokemonListInterface } from 'src/assets/models';
 import { PokemonListStore } from '../state/search-pack.store';
 
 @Injectable({
@@ -9,36 +10,47 @@ import { PokemonListStore } from '../state/search-pack.store';
 })
 export class SearchService {
 
+  // Complete object returned by the listing.
+  public pokemonSearchResults: PokemonListInterface;
+
   constructor(
     private _http: HttpService,
     private _searchStore: PokemonListStore,
   ) { }
 
-  public getFirstTwenty(): Observable<any[]> {
+  public getFirstTwenty(): Observable<PokemonListInterface> {
     const pokemonStore = this._searchStore.getValue();
-    const calendarsInStore = pokemonStore.pokemon;
-    if (calendarsInStore.length > 0) {
-      return of(calendarsInStore);
+    const pokemonInStore = pokemonStore.pokemon;
+    if (pokemonInStore.length > 0) {
+      return of(pokemonInStore);
     }
     return this.updateStore();
   }
 
-  private updateStore(): Observable<any[]> {
+  private updateStore(): Observable<PokemonListInterface> {
     return this.fetchData().pipe(
       tap((resp) => {
         const timeNow = new Date();
         this._searchStore.update({
-          calendars: resp,
-          calendarsLastUpdated: timeNow.toString(),
+          pokemon: resp,
+          pokemonLastUpdated: timeNow.toString(),
         });
       })
     );
   }
 
-  private fetchData(): Observable<any[]> {
+  private fetchData(): Observable<PokemonListInterface> {
     return this._http
       .runHttpCall('GET', '/pokemon', 'application/json')
-      .pipe(pluck('results'));
+      // .pipe(pluck('results'));
+  }
+
+  getPaginated(url: string) {
+    this._http.getUrl(url).subscribe(data => {
+      this.pokemonSearchResults = data;
+    }, err => {
+      console.log('Error getting next page: ', err);
+    })
   }
 }
 

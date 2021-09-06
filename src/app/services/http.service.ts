@@ -60,4 +60,8 @@ export class HttpService {
         return this.http.get<any>(url, { headers, params });
     }
   }
+
+  getUrl(url: string): Observable<any> {
+    return this.http.get<any>(url);
+  }
 }

@@ -11,11 +11,15 @@ import { ComponentsModule } from "./components/components.module";
 import { FormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
+import { DetailsPageComponent } from './pages/details-page/details-page.component';
+import { ListingPageComponent } from './pages/listing-page/listing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchPackComponent
+    DetailsPageComponent,
+    ListingPageComponent,
+    // SearchPackComponent
   ],
   imports: [
     BrowserModule,

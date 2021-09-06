@@ -26,6 +26,7 @@ export class SearchPackComponent implements OnInit {
     console.log('firstTwenty()');
     this.searchService.getFirstTwenty().subscribe(res => {
       console.log('First 20: ', res);
+      this.searchService.pokemonSearchResults = res;
     }, err => {
       console.log('Error: ', err);
     })

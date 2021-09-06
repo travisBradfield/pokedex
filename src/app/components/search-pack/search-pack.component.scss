@@ -5,7 +5,8 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 15vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 }
 
 .example-full-width {
@@ -63,6 +64,10 @@ input[type=text], textarea {
     color: #003a70;
     font-size: medium;
     margin-bottom: 8px;
+}
+
+.show_all:active {
+    background: #fff;
 }
 
 .search_btn:active {

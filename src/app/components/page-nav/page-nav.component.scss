@@ -1,0 +1,38 @@
+.page_nav_row {
+    width: 100%;
+    display: flex;
+}
+
+.nav_btn {
+    border-radius: 25px;
+    border-style: none;
+    height: 40px;
+    // width: 5vw;
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: #ddd;
+    font-size: medium;
+    margin-bottom: 8px;
+}
+
+.start {
+    float: left;
+}
+.end {
+    float: right;
+}
+.nav_btn:active {
+    background: #fff;
+}
+
+.not-active {
+    color: darkgray;
+}
+.active {
+    color: #003a70;
+}
+

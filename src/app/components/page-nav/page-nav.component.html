@@ -1,0 +1,11 @@
+<div class="page_nav_row" *ngIf="searchService.pokemonSearchResults">
+    <button
+        [ngClass]="{ 'not-active': !searchService.pokemonSearchResults.previous, 'active': searchService.pokemonSearchResults.previous }"
+        class="nav_btn start" (click)="changePage('prev')">Prev.</button>
+
+    <p>Page {{ currentPage }} of {{ getPages() }}</p>
+
+    <button
+        [ngClass]="{ 'not-active': !searchService.pokemonSearchResults.next, 'active': searchService.pokemonSearchResults.next }"
+        class="nav_btn end" (click)="changePage('next')">Next</button>
+</div>

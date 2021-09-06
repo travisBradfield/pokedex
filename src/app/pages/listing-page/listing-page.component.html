@@ -1,0 +1,20 @@
+<div class="content" role="main">
+
+    <div class="row chalk_bg">
+    </div>
+  
+    <div class="pale_bg">
+      <app-search-pack></app-search-pack>
+  
+      <div *ngIf="searchService.pokemonSearchResults" class="grid">
+        <div class="item" *ngFor="let character of searchService.pokemonSearchResults.results">
+          <app-list-item [source]="character">
+          </app-list-item>
+        </div>
+      </div>
+  
+      <app-page-nav></app-page-nav>
+  
+    </div>
+  
+  </div>
