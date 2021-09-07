@@ -1,0 +1,31 @@
+name: Deploy to Main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  web:
+    name: Deploy to Main
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+          registry-url: https://npm.pkg.github.com
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build dev
+        run: npm run build --prod --release
+
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_POKEDEX_14013 }}
