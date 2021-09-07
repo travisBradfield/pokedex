@@ -121,7 +121,7 @@ export class DetailsPageComponent implements OnInit {
 
   save() {
     console.log('save()');
-    
+    this.detailsService.focussedCharacter.hidden = false;
     this.savedItems.push(this.detailsService.focussedCharacter);
     this.storageService.setItem('savedChars', JSON.stringify(this.savedItems));
     this.isFavourite = true;

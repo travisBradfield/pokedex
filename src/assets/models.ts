@@ -12,4 +12,5 @@ export interface PokemonListInterface {
 export interface CharacterSource {
     name: string;
     url: string;
+    hidden?: boolean;
 }

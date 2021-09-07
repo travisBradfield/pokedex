@@ -48,7 +48,12 @@ export class SearchService {
   private fetchData(): Observable<PokemonListInterface> {
     return this._http
       .runHttpCall('GET', '/pokemon', 'application/json')
-      // .pipe(pluck('results'));
+      .pipe(map(res => {
+        for (let item of res.results) {
+          item.hidden = false;
+        }
+        return res;
+      }));
   }
 
   getPaginated(url: string) {
@@ -57,6 +62,10 @@ export class SearchService {
     }, err => {
       console.log('Error getting next page: ', err);
     })
+  }
+
+  findCharacterByName(name: string) {
+    return this._http.runHttpCall('GET', `/pokemon/${name}`, 'application/json')
   }
 }
 

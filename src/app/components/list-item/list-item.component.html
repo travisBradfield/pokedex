@@ -1,4 +1,4 @@
-<div class="rectangle" (click)="openDetailsPage()">
+<div class="rectangle" (click)="openDetailsPage()" *ngIf="!showCharacter()">
     <div class="row">
         <img [src]="getSprite()" alt="sprite">
         <h2 *ngIf="source">{{ source.name }}</h2>

@@ -55,6 +55,14 @@ export class ListItemComponent implements OnInit {
     }
   }
 
+  showCharacter() {
+    if (this.source) {
+      return this.source.hidden;
+    } else if (this.details) {
+      return this.details.hidden;
+    }
+  }
+
   openDetailsPage() {
     let id;
     if (this.source) {
@@ -63,7 +71,7 @@ export class ListItemComponent implements OnInit {
     } else if (this.details) {
       id = this.details.id;
     }
-    
+
     this.detailsService.focussedCharacter = this.characterDetails;
     this.router.navigate([`/page-details/${id}`]);
   }
